@@ -14,7 +14,7 @@ import (
 var cacheDir = "/tmp"
 
 func Server() {
-	http.HandleFunc("/upload", func(w http.ResponseWriter, r *http.Request){
+	http.HandleFunc("/upload", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case http.MethodPut:
 			uploadHandle(w, r)
@@ -47,14 +47,12 @@ func uploadHandle(w http.ResponseWriter, r *http.Request) {
 	}(mFile)
 	if err != nil {
 		SendResponse(w, http.StatusBadRequest, Response{"Can't find param chart."})
-		log.Printf(err.Error())
 		return
 	}
 	fileName := fileHeader.Filename
 	err = cacheFile(fileName, mFile)
 	if err != nil {
 		SendResponse(w, http.StatusInternalServerError, Response{"Cache file err."})
-		log.Printf(err.Error())
 		return
 	}
 	log.Printf("Success to cache file %s.", fileName)
@@ -62,7 +60,7 @@ func uploadHandle(w http.ResponseWriter, r *http.Request) {
 }
 
 func cacheFile(name string, r io.Reader) error {
-	absolutePath:=fmt.Sprintf("%s/%s", cacheDir, name)
+	absolutePath := fmt.Sprintf("%s/%s", cacheDir, name)
 	file, err := os.Create(absolutePath)
 	defer func(file *os.File) {
 		_ = file.Close()
@@ -81,7 +79,7 @@ func cacheFile(name string, r io.Reader) error {
 		}
 		m, err := file.Write(buf[:n])
 		if m != n {
-			return errors.New("Cache file error.")
+			return errors.New("cache file error")
 		}
 		if err != nil {
 			return err

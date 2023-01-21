@@ -2,7 +2,6 @@ package pkg
 
 import (
 	"io"
-	"io/ioutil"
 	"net/http"
 )
 
@@ -18,7 +17,7 @@ func Upload(uploadUrl string, reader io.Reader) error {
 	if err != nil {
 		return err
 	}
-	_, err = ioutil.ReadAll(resp.Body)
+	_, err = io.ReadAll(resp.Body)
 	if err != nil {
 		return err
 	}
