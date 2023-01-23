@@ -94,12 +94,45 @@ arr := strings.Split(s,"\n")
 
 # 字符串常用操作汇总
 
-1. index()
-2. lastIndex()
-4. split()
-5. contains()
+1. 从前查询，index()
+2. 从后查询，lastIndex()
+4. 分裂，split()
+5. 是否包含，contains()
+5. 拼接
+6. 截取
 
 # 字符串操作
+
+## 查询
+
+```
+str := "hello word!"
+substr := "o"
+fmt.Println(strings.Index(str, substr)) // 4
+```
+
+## 从后查询
+
+```golang
+str := "hello word!"
+substr := "o"
+fmt.Println(strings.LastIndex(str, substr)) // 4
+```
+
+## split
+
+```
+str := "hello word!"
+substr := "o"
+fmt.Println(strings.Split(str, substr)) // [hell  w rd!]
+```
+
+## 是否包含
+
+```go
+strings.Contains("沃尼塔", "我") // false
+strings.Contains("沃尼塔", "沃") // true
+```
 
 ## 拼接
 
@@ -122,11 +155,3 @@ s3 := s2[:3] // 我，UTF-8每个中文字符占三个字节
 s2 := "我fdd你d他" 
 s3 := string([]rune(s2)[:2]) // 我f
 ```
-
-## 包含
-
-```go
-strings.Contains("沃尼塔", "我") // false
-strings.Contains("沃尼塔", "沃") // true
-```
-

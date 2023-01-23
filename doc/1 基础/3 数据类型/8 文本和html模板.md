@@ -64,7 +64,7 @@ I'm already adult.
 
 ## for
 
-```
+```golang
 var studentTmp = `
 Students' name are{{range .}} {{.Name}}{{end}}.`
 ```

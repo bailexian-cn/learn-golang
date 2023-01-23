@@ -14,7 +14,7 @@ func TestString(t *testing.T) {
 	// 后序查询
 	fmt.Println(strings.LastIndex(str, substr)) // 7
 	// split
-	fmt.Println(strings.Split(str, substr))
+	fmt.Println(strings.Split(str, substr)) // [hell  w rd!]
 	// contains
 	fmt.Println(strings.Contains(str, substr)) // true
 }
