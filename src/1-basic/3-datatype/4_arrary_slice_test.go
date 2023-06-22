@@ -63,5 +63,6 @@ func TestChangeObjectArr(t *testing.T) {
 }
 
 func TestArrIndex(t *testing.T) {
-	
+	arr := []string{"aa", "bb", "cc", "aa"}
+	fmt.Printf("arr: %v\n", arr)
 }
