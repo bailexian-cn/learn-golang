@@ -30,6 +30,19 @@ for {
 }
 ```
 
+## for + judge
+
+```golang
+	arr := []int{1, 1, 1, 1, 0}
+	i := 0
+	for arr[i] > 0 {
+		fmt.Printf("%d time\n", i)
+		i++
+	}
+```
+
+`arr[i] > 0`这个判断语句也可以是方法。
+
 ## 遍历slice
 
 ```go

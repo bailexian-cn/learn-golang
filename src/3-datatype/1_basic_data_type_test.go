@@ -2,6 +2,7 @@ package __datatype
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
 )
 
@@ -11,7 +12,13 @@ const (
 )
 
 func TestIntBit(t *testing.T) {
-	a := 1<<62
+	a := 1 << 62
 	fmt.Println(a)
+}
 
+// decimal convert to hexadecimal
+func TestDec2Hex(t *testing.T) {
+	i := 10
+	hexStr := strconv.FormatInt(int64(i), 16)
+	fmt.Println(hexStr)
 }

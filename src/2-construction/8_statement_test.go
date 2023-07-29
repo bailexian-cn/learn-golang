@@ -5,6 +5,15 @@ import (
 	"testing"
 )
 
+func TestForAndJudge(t *testing.T) {
+	arr := []int{1, 1, 1, 1, 0}
+	i := 0
+	for arr[i] > 0 {
+		fmt.Printf("%d time\n", i)
+		i++
+	}
+}
+
 // there is no while statement in go
 func TestWhile(t *testing.T) {
 

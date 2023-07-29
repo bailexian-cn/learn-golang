@@ -132,7 +132,7 @@ func TestDeepCopyMove(t *testing.T) {
    fmt.Printf("sli's memory address is          %p, val is %v\n", sli, sli)
    copy(sli[1:], sli[2:]) // 最后两个元素向前移动1位，相当于将[3 4]按序赋值给sli[1:]，[1 3 4 4]
    fmt.Printf("forward sli's memory address is  %p, val is %v\n", sli, sli)
-    copy(sli[1:], sli[:2]) // 前面两个元素向后移动1位，相当于将[1 3]按序赋值给sli[1:]，[1 1 3 4]
+   copy(sli[1:3], sli[:2]) // 前面两个元素向后移动1位
    fmt.Printf("rearward sli's memory address is %p, val is %v\n", sli, sli)
 }
 ```

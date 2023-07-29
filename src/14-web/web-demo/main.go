@@ -1,13 +1,11 @@
 package main
 
 import (
-	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"time"
-	"web-demo/db"
-	"web-demo/model"
 )
 
 type key int
@@ -22,35 +20,34 @@ func sleepOneMinute() {
 }
 
 func handler(w http.ResponseWriter, req *http.Request) {
-
-	mysqlDb := db.MysqlDb{
-		MysqlConfig: db.MysqlConfig{
-			Host: "10.255.253.46",
-			Port: "3306",
-			User: "root",
-			Password: "123456",
-		},
-		Database: "test",
+	structObj := struct {
+		Test string
+	}{
+		Test: "test",
 	}
-	// 初始化数据库
-	dbConf := db.Config{
-		Env: "",
-		EnableLog: false,
-		DBPath: "",
+	s, _ := json.Marshal(structObj)
+	_, err := w.Write(s)
+	if err != nil {
+		return
 	}
+}
 
-	url := req.URL
-	go sleepOneMinute()
-	_, _ = fmt.Fprintf(w, "Url of request: %s\n", url)
-	_, _ = fmt.Fprintf(w, "Aa=%d, Bb=%d", model.Aa, Bb)
-	con := req.Context()
-	con = context.WithValue(con, model.Aa, mysqlDb)
-	con = context.WithValue(con, Bb, dbConf)
-	aa := con.Value(model.Aa)
-	fmt.Println(aa)
+func longHandler(w http.ResponseWriter, req *http.Request) {
+	structObj := struct {
+		Test string
+	}{
+		Test: "test",
+	}
+	time.Sleep(3 * time.Minute)
+	s, _ := json.Marshal(structObj)
+	_, err := w.Write(s)
+	if err != nil {
+		return
+	}
 }
 
 func main() {
 	http.HandleFunc("/", handler)
+	http.HandleFunc("/long", longHandler)
 	log.Fatal(http.ListenAndServe("localhost:7777", nil))
 }
