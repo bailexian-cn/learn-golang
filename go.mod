@@ -1,4 +1,4 @@
-module bailexian.cn/learn-golang
+module github.com/bailexian-cn/learn-golang
 
 go 1.17
 
