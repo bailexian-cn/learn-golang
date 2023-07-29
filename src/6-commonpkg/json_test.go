@@ -1,4 +1,4 @@
-package __json
+package __commonpkg
 
 import (
 	"encoding/json"

@@ -3,16 +3,27 @@ package tcp
 import (
 	"fmt"
 	"net"
+	"regexp"
 	"strconv"
 )
 
-func CheckIpv4(ip string) error {
+// ipv4
+var ipv4Regexp = regexp.MustCompile("^((25[0-5])|(2[0-4]\\d)|(1\\d\\d)|([1-9]\\d)|\\d)(\\.((25[0-5])|(2[0-4]\\d)|(1\\d\\d)|([1-9]\\d)|\\d)){3}$")
 
+// cidr
+var ipv4CidrRegexp = regexp.MustCompile("^(?:(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}(?:[0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\/([0-9]|[1-2]\\d|3[0-2])$")
+
+func CheckIpv4Format(ip string) error {
+	if !ipv4Regexp.MatchString(ip) {
+		return fmt.Errorf("ipv4 format error")
+	}
 	return nil
 }
 
-func CheckIpv4Cidr(cidr string) error {
-
+func CheckIpv4CidrFormat(cidr string) error {
+	if !ipv4CidrRegexp.MatchString(cidr) {
+		return fmt.Errorf("ipv4 format error")
+	}
 	return nil
 }
 
