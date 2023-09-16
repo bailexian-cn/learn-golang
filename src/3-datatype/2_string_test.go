@@ -18,3 +18,12 @@ func TestString(t *testing.T) {
 	// contains
 	fmt.Println(strings.Contains(str, substr)) // true
 }
+
+func TestTrimPrefix(t *testing.T) {
+	str := "vip-lb-cke-xxxx"
+	prefix := "vip-lb-"
+	suffix := strings.TrimPrefix(str, prefix)
+	if suffix != "cke-xxxx" {
+		t.Errorf("except cke-xxxx")
+	}
+}

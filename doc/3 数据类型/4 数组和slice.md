@@ -72,7 +72,19 @@ s = append(s, s...) // ["aa","aa"]
 s = append(s, s...) // ["aa","aa","aa","aa"]
 ```
 
-append操作会新建一个对象将原有对象和需要扩展的对象放到新对象中并返回。
+append操作会**新建一个对象将原有对象和需要扩展的对象放到新对象中**并返回。
+
+## 去重合并
+
+
+
+## 缩容
+
+```golang
+func removeElement(slice []string, index int) []string {
+    return append(slice[:index], slice[index+1:]...)
+}
+```
 
 ## **截取**
 

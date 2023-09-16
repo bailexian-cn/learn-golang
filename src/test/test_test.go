@@ -1,8 +1,8 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
+	"strconv"
 	"testing"
 )
 
@@ -12,13 +12,7 @@ type Test struct {
 }
 
 func TestName(t *testing.T) {
-	t1 := Test{
-		Code: 0,
-		Data: "hah",
-	}
-	byteArr, err := json.Marshal(t1)
-	if err != nil {
-		t.Error(err)
-	}
-	fmt.Println(string(byteArr))
+	dpt := int64(7105108852927791000)
+	str := strconv.FormatInt(dpt, 10)
+	fmt.Println(str)
 }
